@@ -3,7 +3,20 @@
 #include <string.h>
 #include <stdlib.h>
 
+//In this project im going to explain about the Syntax Analayzer Step, 
+//so in the first we have a step called lexical analzyer that will read 
+//the source program and translate it to a group of tokens, these tokens will detect
+//the code and its value then send it to my step (Syntax Analyzer), so in my step 
+//that called syntax analyzer or parser, it will take the outputs of the preivous step (lexical analyzer)
+//as a stream of token then translate it to parse tree for making analysis code agains its rules.
 
+
+
+
+//The first stage is the definition of all types of tokens //////////////////////////////////////////
+
+
+//f(1)
 
 bool isKeyword(char* str)
 {
@@ -22,6 +35,8 @@ bool isKeyword(char* str)
         return (true);
     return (false);
 }  
+
+// f(2)
 
 bool isRealNumber(char* str)
 {
@@ -44,7 +59,7 @@ bool isRealNumber(char* str)
 }
 
 
-
+//f(3)
 
 bool isDelimiter(char ch)
 {
@@ -55,7 +70,7 @@ bool isDelimiter(char ch)
         return (true);
     return (false);
 }
-
+//f(4)
 bool isOperator(char ch)
 {
     if (ch == '+' || ch == '-' || ch == '*' ||
@@ -64,7 +79,7 @@ bool isOperator(char ch)
         return (true);
     return (false);
 }
-
+//f(5)
 
 bool validIdentifier(char* str)
 {
@@ -78,6 +93,7 @@ bool validIdentifier(char* str)
 
 
 
+//f(6)
 
 bool isInteger(char* str)
 {
@@ -97,31 +113,7 @@ bool isInteger(char* str)
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Extracts the SUBSTRING for test code
+//  SUBSTRING for test code
 char* subString(char* str, int left, int right)
 {
     int i;
@@ -132,6 +124,7 @@ char* subString(char* str, int left, int right)
     subStr[right - left + 1] = '\0';
     return (subStr);
 }
+
 // Parsing the input STRING for test code
 void parse(char* str)
 {
@@ -141,6 +134,7 @@ void parse(char* str)
         if (isDelimiter(str[right]) == false)
             right++;
         if (isDelimiter(str[right]) == true && left == right) {
+
             if (isOperator(str[right]) == true)
                 printf("'%c' IS AN OPERATOR\n", str[right]);
             right++;
@@ -166,14 +160,3 @@ void parse(char* str)
     }
     return;
 }
-
-int main()
-{
-   
-    char str[100];
-    printf("Enter the String: \n");
-    scanf("%[^\n]s", &str);
-    parse(str); 
-    return (0);
-}
-
